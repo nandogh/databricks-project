@@ -1,0 +1,862 @@
+{
+  "datasets": [
+    {
+      "name": "9ed94ab9",
+      "displayName": "vw_fact_orders_enriched",
+      "queryLines": [
+        "SELECT * FROM fmcg.gold.vw_fact_orders_enriched"
+      ],
+      "catalog": "fmcg",
+      "schema": "gold"
+    }
+  ],
+  "pages": [
+    {
+      "name": "5cb5ffb6",
+      "displayName": "Sales",
+      "layout": [
+        {
+          "widget": {
+            "name": "21dae865",
+            "multilineTextboxSpec": {
+              "lines": [
+                "<span style=\"text-align:center;display:block\"><span style=\"font-size: 24px;\">Sales Insights</span></span>"
+              ]
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "light": "#46CABF",
+                "dark": "#62AFEC"
+              },
+              "widgetBorderColor": {
+                "light": "#5A5A5A"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "total-revenue",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "sum(total_amount_inr)",
+                      "expression": "SUM(`total_amount_inr`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Total Revenue"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(total_amount_inr)"
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#155A94"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "cebd0b61",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "sum(sold_quantity)",
+                      "expression": "SUM(`sold_quantity`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Total Quantity"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(sold_quantity)"
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#155A94"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "year",
+            "queries": [
+              {
+                "name": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_year",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "year",
+                      "expression": "`year`"
+                    },
+                    {
+                      "name": "year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Year"
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "year",
+                    "queryName": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "quarter",
+            "queries": [
+              {
+                "name": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_quarter",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "quarter",
+                      "expression": "`quarter`"
+                    },
+                    {
+                      "name": "quarter_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Quarter"
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "quarter",
+                    "queryName": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_quarter"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "month",
+            "queries": [
+              {
+                "name": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_month_name",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "month_name",
+                      "expression": "`month_name`"
+                    },
+                    {
+                      "name": "month_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Month",
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "month_name",
+                    "queryName": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_month_name"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 1,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "96f6e602",
+            "queries": [
+              {
+                "name": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_channel",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "channel",
+                      "expression": "`channel`"
+                    },
+                    {
+                      "name": "channel_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Channel",
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "channel",
+                    "queryName": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_channel"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 7,
+            "y": 1,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "622aa9aa",
+            "queries": [
+              {
+                "name": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_category",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "category",
+                      "expression": "`category`"
+                    },
+                    {
+                      "name": "category_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Category",
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "category",
+                    "queryName": "dashboards/01f11734d8011d96b08f3f3cb87952b9/datasets/01f11735378b1c79a21f9a56cc522474_category"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "138072f0",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "countdistinct(customer)",
+                      "expression": "COUNT(DISTINCT `customer`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Unique Customers"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "countdistinct(customer)"
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#155A94"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "2968c600",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "avg(price_inr)",
+                      "expression": "AVG(`price_inr`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Average Salling Price"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(price_inr)"
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#155A94"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "f029fad1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "sum(total_amount_inr)",
+                      "expression": "SUM(`total_amount_inr`)"
+                    },
+                    {
+                      "name": "product",
+                      "expression": "`product`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Top 10 Products by Total Revenue. Revenue on X axis",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(total_amount_inr)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "product",
+                  "scale": {
+                    "type": "categorical",
+                    "categorySize": {
+                      "type": "number-of-categories",
+                      "number": 10
+                    },
+                    "sort": {
+                      "by": "x-reversed"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 7,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "d2af0ac1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "sum(total_amount_inr)",
+                      "expression": "SUM(`total_amount_inr`)"
+                    },
+                    {
+                      "name": "channel",
+                      "expression": "`channel`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Revenue Share by Channel",
+                "showTitle": true
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(total_amount_inr)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "channel",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 7,
+            "y": 4,
+            "width": 5,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "b96192ca",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "month_name",
+                      "expression": "`month_name`"
+                    },
+                    {
+                      "name": "sum(total_amount_inr)",
+                      "expression": "SUM(`total_amount_inr`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Monthly Revenue Trend",
+                "showTitle": true
+              },
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "month_name",
+                  "displayName": "Month",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_amount_inr)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "INR",
+                    "abbreviation": "compact"
+                  },
+                  "displayName": "Revenue",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "all-customers-by-revenue",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "customer",
+                      "expression": "`customer`"
+                    },
+                    {
+                      "name": "sum(sold_quantity)",
+                      "expression": "SUM(`sold_quantity`)"
+                    },
+                    {
+                      "name": "sum(total_amount_inr)",
+                      "expression": "SUM(`total_amount_inr`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "All Customers by Revenue",
+                "showTitle": true
+              },
+              "rowsPerPage": 25,
+              "displayRowNumbers": false,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "customer"
+                  },
+                  {
+                    "fieldName": "sum(sold_quantity)",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 0
+                      },
+                      "significantFigures": {
+                        "type": "all"
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "displayName": "Quantity",
+                    "formatTemplate": "{{ @formatted }}"
+                  },
+                  {
+                    "fieldName": "sum(total_amount_inr)",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "compact",
+                      "decimalPlaces": {
+                        "type": "all"
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "displayName": "Revenue",
+                    "formatTemplate": "{{ @formatted }}"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 16,
+            "width": 6,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "06b1020b",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "variant",
+                      "expression": "`variant`"
+                    },
+                    {
+                      "name": "sum(total_amount_inr)",
+                      "expression": "SUM(`total_amount_inr`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Top Variant by Revenue",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "variant",
+                  "axis": {
+                    "labelAngle": 90
+                  },
+                  "scale": {
+                    "type": "categorical",
+                    "categorySize": {
+                      "type": "number-of-categories",
+                      "number": 10
+                    },
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_amount_inr)",
+                  "axis": {
+                    "title": "Revenue",
+                    "hideGrid": false,
+                    "hideLabels": false
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 16,
+            "width": 6,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "5f02ecd3",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9ed94ab9",
+                  "fields": [
+                    {
+                      "name": "product",
+                      "expression": "`product`"
+                    },
+                    {
+                      "name": "sum(price_inr)",
+                      "expression": "SUM(`price_inr`)"
+                    },
+                    {
+                      "name": "sum(sold_quantity)",
+                      "expression": "SUM(`sold_quantity`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Product Price vs Quantity",
+                "showTitle": true
+              },
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(price_inr)",
+                  "displayName": "Product Price (INR)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(sold_quantity)",
+                  "displayName": "Sold Quantity",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "product",
+                  "legend": {
+                    "hideTitle": true,
+                    "hide": true
+                  },
+                  "displayName": "Product",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 24,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
